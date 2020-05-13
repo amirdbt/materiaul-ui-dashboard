@@ -8,7 +8,7 @@ import {
   makeStyles,
   TextField,
   Link,
-  CircularProgress,
+  LinearProgress
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,14 +26,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     textAlign: "center",
   },
-  buttonProgress: {
-    color: "green",
-    position: "absolute",
-    top: "73%",
-    left: "50%",
-    marginTop: -12,
-    marginLeft: -12,
-  },
+
 }));
 
 const SignUp = () => {
@@ -138,10 +131,7 @@ const SignUp = () => {
                 Sign up
               </Button>
               {loading && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
+               <LinearProgress variant="query" style={{ marginTop: "10px" }} />
               )}
 
               <div style={{ marginTop: "10px", cursor: "pointer" }}></div>

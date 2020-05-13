@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import {useHistory} from "react-router-dom"
 import {
   Card,
   CardContent,
@@ -8,6 +9,7 @@ import {
   makeStyles,
   TextField,
   Link,
+  CircularProgress,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,14 +35,49 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     textAlign: "center",
   },
+  buttonProgress: {
+    color: "green",
+    position: "absolute",
+    top: "71%",
+    left: "50%",
+    marginTop: -12,
+    marginLeft: -12,
+  },
 }));
 
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
+  let history = useHistory()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+    if (!loading) {
+      setLoading(true);
+    }
+    setTimeout(() => {
+      if (email === "" || password === "") {
+        setErr(true);
+      }
+      setLoading(false);
+      console.log(user);
+      history.push("/")
+    }, 2000);
+  };
+
   const classes = useStyles();
   return (
     <div className="sign-in">
       <Card className={classes.root} elevation={0}>
         <CardContent>
+          <form onSubmit={handleSubmit}>
           <div>
             <div className={classes.display}>
               <Avatar
@@ -57,10 +94,22 @@ const SignIn = () => {
             <TextField
               label="Email Address *"
               fullWidth
+              type="text"
               className={classes.text}
+              error={err}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <div style={{ marginTop: "20px" }}></div>
-            <TextField label="Password *" fullWidth className={classes.text} />
+            <TextField
+              label="Password *"
+              fullWidth
+              className={classes.text}
+              type="password"
+              error={err}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
             <div style={{ marginTop: "30px" }}></div>
 
@@ -68,13 +117,21 @@ const SignIn = () => {
               variant="contained"
               color="primary"
               className={classes.text}
-              href="/"
+              onClick={handleSubmit}
+              disabled={loading}
+    
             >
               Sign in
             </Button>
+            {loading && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
 
             <div style={{ marginTop: "20px" }}></div>
-            <div style={{display:"flex", justifyContent:"space-between"}}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Typography style={{ textAlign: "center" }} color="primary">
                 Forgot password
               </Typography>
@@ -83,6 +140,7 @@ const SignIn = () => {
               </Link>
             </div>
           </div>
+          </form>
         </CardContent>
       </Card>
     </div>

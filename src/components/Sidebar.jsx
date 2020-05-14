@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#303f9f",
   },
   listItems: {
-    padding: "17px",
+    padding: "15px",
   },
   iconColor: {
     color: "#bcbcbc",

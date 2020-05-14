@@ -11,6 +11,7 @@ import {
   Link,
   LinearProgress
 } from "@material-ui/core";
+import logo from "./outsource-logo-wide.png"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,7 +75,7 @@ const SignIn = () => {
             <div className={classes.display}>
               <Avatar
                 alt="Profile image"
-                src="https://i.picsum.photos/id/1005/5760/3840.jpg"
+                src={logo}
                 className={classes.image}
               />
               <Typography variant="h5">Welcome back, Amir!</Typography>
@@ -122,9 +123,9 @@ const SignIn = () => {
 
             <div style={{ marginTop: "20px" }}></div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography style={{ textAlign: "center" }} color="primary">
+            <Link href="/reset-password" variant="body2">
                 Forgot password
-              </Typography>
+              </Link>
               <Link href="/sign-up" variant="body2">
                 Sign up
               </Link>

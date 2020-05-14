@@ -6,12 +6,13 @@ import Projects from "./components/Projects";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp"
 import Settings from "./components/Settings"
+import ResetPassword from "./components/ResetPassword"
 import { Switch, Route, withRouter } from "react-router-dom";
 
 const Main = withRouter(({ location }) => {
   return (
     <>
-      {location.pathname !== "/sign-in" && location.pathname !== "/sign-up" && (
+      {location.pathname !== "/sign-in" && location.pathname !== "/sign-up" && location.pathname !== "/reset-password" && (
         <>
           <Sidebar />
         </>
@@ -23,6 +24,7 @@ const Main = withRouter(({ location }) => {
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
         <Route path="/settings" component={Settings} />
+        <Route path="/reset-password" component={ResetPassword} />
       </Switch>
     </>
   );

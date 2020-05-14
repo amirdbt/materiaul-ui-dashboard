@@ -23,7 +23,8 @@ import {
   AccountCircle,
   Search,
   Notifications,
-  LocalMall
+  LocalMall,
+  Settings
 } from "@material-ui/icons";
 
 const drawerWidth = 250;
@@ -70,9 +71,12 @@ const useStyles = makeStyles((theme) => ({
   appIcons: {
     display: "flex",
   },
-  link:{
+  link: {
     color: "#ffffff",
-    textDecoration: "none"
+    textDecoration: "none",
+  },
+  men:{
+    top: 0
   }
 }));
 
@@ -111,6 +115,8 @@ const Sidebar = () => {
             <IconButton
               edge="end"
               aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               color="inherit"
               onClick={handleMenu}
             >
@@ -119,8 +125,9 @@ const Sidebar = () => {
             <Menu
               open={open}
               onClose={handleClose}
-              keepMounted
+              className={classes.men}
               anchorOrigin={{ vertical: "top", horizontal: "right" }}
+              keepMounted
               transformOrigin={{ vertical: "top", horizontal: "right" }}
               elevation={0}
             >
@@ -143,7 +150,7 @@ const Sidebar = () => {
           <header className={classes.header}>My Sidebar</header>
           <Divider />
           <List>
-            <Link className={classes.link} to="/">        
+            <Link className={classes.link} to="/">
               <ListItem button className={classes.listItems}>
                 <ListItemIcon className={classes.iconColor}>
                   <Dashboard />
@@ -160,14 +167,14 @@ const Sidebar = () => {
             </ListItem>
 
             <Link className={classes.link} to="/profile">
-            <ListItem button className={classes.listItems}>
-              <ListItemIcon className={classes.iconColor}>
-                <AccountCircle />
-              </ListItemIcon>
-              <Typography variant="h5">Profile</Typography>
-            </ListItem>
+              <ListItem button className={classes.listItems}>
+                <ListItemIcon className={classes.iconColor}>
+                  <AccountCircle />
+                </ListItemIcon>
+                <Typography variant="h5">Profile</Typography>
+              </ListItem>
             </Link>
-           
+
             <ListItem button className={classes.listItems}>
               <ListItemIcon className={classes.iconColor}>
                 <Mail />
@@ -175,15 +182,23 @@ const Sidebar = () => {
               <Typography variant="h5">All Mails</Typography>
             </ListItem>
 
-            <Link  className={classes.link} to="/projects">
-            <ListItem button className={classes.listItems}>
-              <ListItemIcon className={classes.iconColor}>
-                <LocalMall />
-              </ListItemIcon>
-              <Typography variant="h5">Projects</Typography>
-            </ListItem>
+            <Link className={classes.link} to="/projects">
+              <ListItem button className={classes.listItems}>
+                <ListItemIcon className={classes.iconColor}>
+                  <LocalMall />
+                </ListItemIcon>
+                <Typography variant="h5">Projects</Typography>
+              </ListItem>
             </Link>
-            
+
+            <Link className={classes.link} to="/settings">
+              <ListItem button className={classes.listItems}>
+                <ListItemIcon className={classes.iconColor}>
+                  <Settings />
+                </ListItemIcon>
+                <Typography variant="h5">User Settings</Typography>
+              </ListItem>
+            </Link>
           </List>
         </Drawer>
       </nav>

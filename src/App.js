@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Projects from "./components/Projects";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp"
+import Settings from "./components/Settings"
 import { Switch, Route, withRouter } from "react-router-dom";
 
 const Main = withRouter(({ location }) => {
@@ -21,6 +22,7 @@ const Main = withRouter(({ location }) => {
         <Route path="/projects" component={Projects} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
+        <Route path="/settings" component={Settings} />
       </Switch>
     </>
   );

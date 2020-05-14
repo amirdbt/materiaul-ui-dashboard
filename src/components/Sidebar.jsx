@@ -77,6 +77,10 @@ const useStyles = makeStyles((theme) => ({
   },
   men:{
     top: 0
+  },
+  link1:{
+    textDecoration: "none",
+    color : "#000000"
   }
 }));
 
@@ -132,7 +136,9 @@ const Sidebar = () => {
               elevation={0}
             >
               <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <Link to="/sign-in" className={classes.link1}>
               <MenuItem onClick={handleClose}>Log out</MenuItem>
+              </Link>
             </Menu>
           </div>
         </Toolbar>

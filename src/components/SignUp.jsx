@@ -127,6 +127,7 @@ const SignUp = () => {
                 className={classes.text}
                 onClick={handleSubmit}
                 disabled={loading}
+      
               >
                 Sign up
               </Button>
